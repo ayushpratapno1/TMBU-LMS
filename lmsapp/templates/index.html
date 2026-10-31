@@ -1,0 +1,250 @@
+{% extends "parent.html" %}
+{% block main %}
+<head>
+<title>Home</title>
+</head>
+{% load static %}
+
+<style>
+  #about
+{
+	height:600px;
+	width:100%;
+	background-color:white;
+}
+#about1
+{
+	height:400px;
+	width:30%;
+	float:left;
+}
+#about2
+{
+	height:600px;
+	width:70%;
+	float:left;
+}
+#college
+{
+	margin-top:50px;
+	margin-left:10px;
+}
+#text
+{
+	margin-top:50px;
+	margin-left:0px;
+}
+
+#readMore
+{
+	background-color:red;
+	color:white;
+	border-radius:10px;
+}
+#readMore a
+{
+	text-decoration:none;
+	color:white;
+}
+
+</style>
+
+
+
+
+
+   <!--Slider start-->   
+   <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" style="height: 300px;">
+      <div class="carousel-item active">
+        <img src="{%static 'images/a1.jpeg'%}" class="d-block w-100" alt="..." style="margin-top: -100px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'images/a2.jpeg'%}" class="d-block w-100" alt="..." style="margin-top: -10px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'images/a3.jpeg'%}" class="d-block w-100" alt="..." >
+      </div>
+    </div>
+  </div>
+  <!--Slider End-->
+
+<!-- row Div end -->
+<div class="container-fluid" style="width: 100%;">
+<div class="row">
+    
+      <div class="card col-sm-4" style="width: 18rem; width: 20%; float: left;">
+        <img src="../static/images/mentor1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="memb_info">
+            <h3 class="memb_title">Shri Yogi Adityanathsss</h3>
+            <span class="memb_name">Hon’ble Chief Minister
+              Government of Uttar Pradesh </span><br/>
+            <a href="#" class="btn btn-danger">Know More</a>
+          </div>
+        </div>
+      </div>
+      <div class="card col-sm-4" style="width: 18rem; width: 20%; float: left;">
+        <img src="../static/images/mentor2.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="memb_info">
+            <h3 class="memb_title">Shri Ashish Patel</h3>
+            <span class="memb_name">Hon’ble Minister of
+              Technical Education Department</span><br/>
+            <a href="#" class="btn btn-danger">Know More</a>
+          </div>
+        </div>
+      </div>
+      
+    <div class="card col-sm-4" style="width: 18rem; width: 20%; float: left;">
+        <img src="../static/images/mentor3.jpg" class="card-img-top" alt="..." style="height: 100%;">
+        <div class="card-body">
+            <div class="memb_info">
+            <h3 class="memb_title">Shri Amrit Abhijat</h3>
+            <span class="memb_name">Principal Secretary
+              Technical Education Department</span><br/>
+            <a href="#" class="btn btn-danger">Know More</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card col-sm-4" style="width: 18rem; width: 20%; float: left;">
+        <img src="../static/images/mentor4.jpg" class="card-img-top" alt="..." style="height: 100%;">
+        <div class="card-body">
+            <div class="memb_info">
+            <h3 class="memb_title">Shri Alok Kumar-III</h3>
+            <span class="memb_name">Secretary
+              Technical Education Department</span>
+            <a href="#" class="btn btn-danger">Know More</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card col-sm-4" style="width: 18rem; width: 20%; float: left;">
+        <img src="../static/images/mentor5.jpg" class="card-img-top" alt="..." style="height: 100%;">
+        <div class="card-body">
+            <div class="memb_info">
+            <h3 class="memb_title">Shri Manoj Kumar</h3>
+            <span class="memb_name">Director
+              Directorate of Technical Education</span><br/>
+            <a href="#" class="btn btn-danger">Know More</a>
+          </div>
+        </div>
+      </div>
+      
+    <!-- End Management About -->
+    
+    <div class="container-fluid" style="background-color: white; width: 100%;">
+      <div>
+        <div id="about" style="width: 100%;">
+          <div id="about1"><h1 id="college"><img src="../static/images/college.jpg" height="350px" width="100%"/></h1></div>
+          <div id="about2">
+          <h2 id="text">Welcome to Government Polytechnic Mau</h2><p style="font-family:justify;"><b style="color:red;">Government Polytechnic, Mau</b> is commited to provide quality education to the students enabling them to excel in the field of engineering to cater to the changing & challenging needs of society and industry by contributing to the academic standing and overall knowledge deveplopment of the students.</p>
+          <ol>
+          <li>College library is fully automated and equipped with all modern facilities like free   Wi-Fi, Computers, Reading room, etc</li>
+          <li>College has lab for every branch - Textile Lab, Computer science Lab, Electronic Lab, Electrical Lab, etc.</li>
+          <li>In addition to the academic activities, the institute provides ambience for all-round development of the personality of the student through its continuous emphasis on co-curricular activities like sports, academic and industrial tours and cultural and social-service activities</li>
+          </ol>
+          <h1 id="readMore"><a href="#">Read more...</a></h1>
+          </div>
+          </div>
+      </div>
+    </div>
+      <!-- End Management About -->
+      
+    <!-- Announcement -->
+    
+    
+    <!--footer-->
+    <div style="background-color: grey;">
+    <footer id="dk-footer" class="dk-footer">
+    
+     
+    <!-- Posts -->
+    
+    <section id="posts_types" style="background-color: grey ">
+      <div class="container-fluid">
+              <div class="row">
+              <div class="col-lg-6 post_col notices_col">
+              <div class="main_block">
+              <div class="post_head sect_head">
+              <i class="fa-solid fa-bullhorn"></i>
+              <h3>Notices</h3>
+                      </div>
+    <div class="post_lists">
+    <ul>
+    <li><a href="#" class="a">Part-I practical Exam  </a></li> 
+    <li><a href="#" class="a">Fees and Form Submission date of part-2 and part-3  </a></li> 
+    <li><a href="#" class="a">Part-3 Exam-2023 (2020-23)  </a></li> 
+    <li><a href="#" class="a">Part-2 Exam-2023 (2021-24)  </a></li> 
+    <li><a href="#" class="a">New Exam Center for Master Sem-III (2021-23) (Math and Hindi)  </a></li> 
+    <li><a href="#" class="a">Paper BCA-302 exam date shifted 05-09-2023 to 23-09-2023  </a></li> 
+    </ul>
+    <h3>View All Notices</h3>
+                      </div>
+                  </div>
+              </div>
+    
+              <div class="col-lg-6 post_col circulars_col">
+                  <div class="main_block">
+                      <div class="post_head sect_head">
+                          <i class="fa-solid fa-paste"></i>
+                          <h3 class="sect_title">Circulars</h3>
+                      </div>
+    <div>
+    <ul>
+    <li><a href="#" class="a">75% Attendance Mandatory  </a></li> 
+    <li><a href="#" class="a">Senate Elected member  </a></li> 
+    <li><a href="#" class="a">Senate elected member  </a></li> 
+    <li><a href="#" class="a">Senate elected member  </a></li> 
+    <li><a href="#" class="a">OMSP and IFF Exam 2023  </a></li> 
+    <li><a href="#" class="a">Exam OMSP Sem -III (2021-2024)  </a></li> 
+    </ul>
+    <h3>View All Circulars</h3>
+    </div>
+                  </div>
+              </div>
+    
+                          <div class="col-lg-6 post_col news_col">
+                          <div class="main_block">
+                          <div class="post_head sect_head">
+                            <i class="fa-solid fa-newspaper"></i>
+                            <h3 class="sect_title">News & Events</h3>
+                          </div>
+    <div class="post_lists">
+    <ul>
+    <li><a href="#" class="a">M.Ed Entrance Test on 16/07/2023  </a></li> 
+    <li><a href="#" class="a">News Clipping 24_05_2023  </a></li> 
+    <li><a href="#" class="a">नई बात, भागलपुर।  </a></li> 
+    <li><a href="#" class="a">News Clipping 09_05_2023  </a></li> 
+    <li><a href="#" class="a">TMBU 1st Edition (Book April)  </a></li> 
+    <li><a href="#" class="a">News Clipping 27-04-2023  </a></li> 
+    </ul>
+    </div>
+    </div>
+    </div>
+    
+                          <div class="col-lg-6 post_col news_col">
+                          <div class="main_block">
+                          <div class="post_head sect_head">
+                          <i class="fa-solid fa-gavel"></i>
+                          <h3 class="sect_title">Tenders</h3>
+                          </div>
+                          <div>
+    <ul>
+    <li><a href="#" class="a">Tender for Bio-Metric Machine  </a></li> 
+    <li><a href="#" class="a">Tender for Boundary Wall in Old PG  </a></li> 
+    <li><a href="#" class="a">Tender for construction of Boundary Wall and Building  </a></li> 
+    <li><a href="#" class="a">Tender For Agriculture land in University Campus  </a></li> 
+    <li><a href="#" class="a">Quotation for following Items like ID cards, Folders A4 etc  </a></li> 
+    <li><a href="#" class="a">Quotations for Air Conditionars and Stabilizers  </a></li> 
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    
+
+{% endblock main %}

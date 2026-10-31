@@ -1,0 +1,104 @@
+{% extends "adminparent.html" %}
+{% block body %}
+<style>
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      background-color: rgb(78, 78, 77);
+    }
+    
+    td, th {
+      border: 1px solid #959797;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #4b4a4a;
+    }
+    </style>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Issue Book Form</h1>   
+            <form class="form-group" method="post" action="{% url 'adminapp:issue' %}">
+                {% csrf_token %}
+                <table class="table table-bordered text-light" style="width: 60%; margin: auto;">
+<tr>
+<td>Book Id</td>
+<td>
+<input type="text" name="bookid" class="form-control text-dark" value="{{book.bookid}}" readonly/>
+</td>
+</tr>
+        <tr>
+        <td>ISBN NO</td>
+        <td>
+        <input type="text" name="isbnno" class="form-control text-dark" value="{{book.isbnno}}" readonly/>
+        </td>
+        </tr>
+<tr>
+<td>Program</td>
+<td>
+<input type="text" name="program" class="form-control text-dark" value="{{book.program}}" readonly/>
+</td>
+</tr>
+        <tr>
+        <td>Branch</td>
+        <td>
+        <input type="text" name="branch" class="form-control text-dark" value="{{book.branch}}" readonly/>
+        </td>
+        </tr>
+<tr>
+<td>Year</td>
+<td>
+<input type="text" name="year" class="form-control text-dark" value="{{book.year}}" readonly/>
+</td>
+</tr>
+        <tr>
+        <td>Subject</td>
+        <td>
+        <input type="text" name="subject" class="form-control text-dark" value="{{book.subject}}" readonly/>
+        </td>
+        </tr>
+<tr>
+<td>Book Name</td>
+<td>
+<input type="text" name="bookname" class="form-control text-dark" value="{{book.bookname}}" readonly/>
+</td>
+</tr>
+        <tr>
+        <td>Author Name</td>
+        <td>
+        <input type="text" name="authorname" class="form-control text-dark" value="{{book.authorname}}" readonly/>
+        </td>
+        </tr>
+        <tr>
+<td>Enter Roll No</td>
+<td>
+<input type="number" name="rollno" class="form-control text-light"/>
+</td>
+</tr>
+        <tr>
+        <td>Issue Date</td>
+        <td>
+        <input type="date" name="issuedate" class="form-control text-light"/>
+        </td>
+        </tr>
+        <tr>
+            <td>Due Date</td>
+            <td>
+            <input type="date" name="duedate" class="form-control text-light"/>
+            </td>
+            </tr>
+<tr>
+    <td></td>
+    <td>
+    <button type="submit" class="btn btn-success">Issue Book</button>
+    </td>
+</tr>
+                </table>
+            </form>           
+        </div>
+       </div>
+{% endblock body %}

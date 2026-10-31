@@ -1,0 +1,69 @@
+{% extends "parent.html" %}
+{% block title %}
+    <title>About Us</title>
+{% endblock title %}
+{% block main %}
+
+<style>
+    #about
+  {
+      height:600px;
+      width:100%;
+      background-color:white;
+  }
+  #about1
+  {
+      height:500px;
+      width:30%;
+      float:left;
+  }
+  #about2
+  {
+      height:500px;
+      width:70%;
+      float:left;
+  }
+  #college
+  {
+      margin-top:50px;
+      margin-left:10px;
+  }
+  #text
+  {
+      margin-top:50px;
+      margin-left:0px;
+  }
+  
+  #readMore
+  {
+      background-color:red;
+      color:white;
+      border-radius:10px;
+  }
+  #readMore a
+  {
+      text-decoration:none;
+      color:white;
+  }
+  
+  </style>
+
+
+<div class="container-fluid" style="background-color: white; width: 100%;">
+      <div>
+        <div id="about" style="width: 100%;">
+          <div id="about1"><h1 id="college"><img src="../static/images/college.jpg" height="350px" width="100%"/></h1></div>
+          <div id="about2">
+          <h2 id="text">Welcome to Government Polytechnic Mau</h2><p style="font-family:justify;"><b style="color:red;">Government Polytechnic, Mau</b> is commited to provide quality education to the students enabling them to excel in the field of engineering to cater to the changing & challenging needs of society and industry by contributing to the academic standing and overall knowledge deveplopment of the students.</p>
+          <ol>
+          <li>College library is fully automated and equipped with all modern facilities like free   Wi-Fi, Computers, Reading room, etc</li>
+          <li>College has lab for every branch - Textile Lab, Computer science Lab, Electronic Lab, Electrical Lab, etc.</li>
+          <li>In addition to the academic activities, the institute provides ambience for all-round development of the personality of the student through its continuous emphasis on co-curricular activities like sports, academic and industrial tours and cultural and social-service activities</li>
+          </ol>
+          <h1 id="readMore" style="width: 30%;"><a href="#">Read more...</a></h1>
+          </div>
+          </div>
+      </div>
+    </div>
+            
+{% endblock main %}

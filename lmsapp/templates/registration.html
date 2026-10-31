@@ -1,0 +1,316 @@
+{% extends "parent.html" %}
+{% block title %}
+    <title>Register</title>
+{% endblock title %}
+{% block main %}
+<style>
+    .register{
+    background: transparent;
+    margin-top: 0%;
+    padding: 7%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background:-webkit-linear-gradient(left, #3931af, #00c6ff);
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+</style>
+<script>
+    function validate()
+    {
+        var rollno=document.getElementById("rollno");
+        var name=document.getElementById("name");
+        var fname=document.getElementById("fname");
+        var mname=document.getElementById("mname");
+        var contactno=document.getElementById("contactno");
+        var emailaddress=document.getElementById("emailaddress");
+        var password=document.getElementById("password");
+        var confirmpassword=document.getElementById("confirmpassword");
+        var emailexp=/^\w+([\.-]?\w+)*@\w+([\.-?\w+])*(\.\w{2,3})+$/
+        if (rollno.value==null || rollno.value=="")
+        {
+            alert('Please enter your Roll No');
+            rollno.focus();
+        }
+        else if (isNaN(rollno.value))
+        {
+            alert('Please enter number only');
+            rollno.focus();
+        } 
+        else if (name.value==null || name.value=="")
+        {
+            alert('Please enter your name');
+            name.focus();
+        }
+        else if (fname.value==null || fname.value=="")
+        {
+            alert('Please enter father name');
+            fname.focus();
+        }
+        else if (mname.value==null || mname.value=="")
+        {
+            alert('Please enter mother name');
+            mname.focus();
+        }
+        else if (contactno.value=="" || contactno.value==null)
+        {
+            alert('Please enter contact no');
+            contactno.focus();
+        }
+        else if (isNaN(contactno.value))
+        {
+            alert('Please enter numbers in contact no');
+            contactno.focus();
+        } 
+        else if (contactno.value.length!=10)
+        {
+            alert('Please enter contact number');
+            contactno.focus();
+        }
+        else if (emailaddress.value==null || emailaddress.value=="")
+        {
+            alert('Please enter your emailaddress');
+            emailaddress.focus();
+        }
+        else if (!emailexp.test(emailaddress.value))
+        {
+            alert('Please enter valid emailexp');
+            emailaddress.focus();
+        }
+        else if (password.value==null || password.value=="")
+        {
+          alert('Please enter your password');
+          password.focus();
+        }
+        else if (password.value.length<8)
+        {
+            alert('Please enter atleast 8 character');
+            password.focus();
+        }
+        else if (confirmpassword.value==null || confirmpassword.value=="")
+        {
+            alert('Please enter confirm password');
+            confirmpassword.focus();
+        }
+        else if (confirmpassword.value!=password.value)
+        {
+          alert('Please enter valid password')
+          confirmpassword.focus();
+        }
+        else
+        {
+            document.getElementById("frmregistration").submit();
+        }
+       
+    }
+</script>
+{% if messages %}
+{% for messages in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Thanks!</strong>Your Enquiry is Successfull
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+</div>
+{% endfor %}
+{% endif %}
+<form class="form-group" id="frmregistration" method="post" onsubmit="event.preventDefault();validate();" action="{% url 'lmsapp:registration'%}">
+{% csrf_token %}
+
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="../static/images/A.png" alt="asdfg">
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away!</p>
+            
+        </div>
+        <div class="col-md-9 register-right">
+            
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Apply as a Student</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="Roll No *" name="rollno" id="rollno"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name *" name="name" id="name" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Father Name *" name="fname" id="fname"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control"  placeholder="Mother Name *" name="mname" id="mname"/>
+                            </div>
+                            <div class="form-group">
+                                <div class="maxl">
+                                    <label class="radio inline text-light">Gender 
+                                        <input type="radio" name="gender" value="male" class="form-check-input">
+                                        <span> Male </span> 
+                                    </label>
+                                    <label class="radio inline text-light"> 
+                                        <input type="radio" name="gender" value="female" class="form-check-input">
+                                        <span>Female </span> 
+                                    </label>
+                                    <div class="form-group">
+                                        <input type="number" minlength="10" maxlength="10" name="contactno" class="form-control" placeholder="Your Phone *" id="contactno"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="address" class="form-control" placeholder="Your address"></textarea>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                        
+                                    <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Your Email *"/>
+                                </div>
+                                
+                                <select class="form-control" name="program">
+                                    <option class="hidden"  selected disabled >Please select your Program</option>
+                                {% for p in program %} 
+                                <option value="{{p.program}}">{{p.program}}</option>
+
+                                {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control" name="branch">
+                                    <option class="hidden"  selected disabled>Please select your Branch</option>
+                                    {% for p in branch %} 
+                                    <option value="{{p.branch}}">{{p.branch}}</option>
+    
+                                    {% endfor %}
+                                    </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <select class="form-control" name="year">
+                                    <option class="hidden"  selected disabled>Please select your Year</option>
+                                    {% for p in year %} 
+                                    <option value="{{p.year}}">{{p.year}}</option>
+    
+                                    {% endfor %}
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password *" name="password" id="password" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control"  placeholder="Confirm Password *" name="confirmpassword" id="confirmpassword" />
+                            </div>
+                            
+                            <input type="submit" class="btnRegister"  value="Register"/>
+                        </div>
+                    </div>
+                </div>
+                        
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock main %}

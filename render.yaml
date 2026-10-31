@@ -1,0 +1,92 @@
+
+services:
+  # ==========================================
+  # PRODUCTION SERVICE
+  # Git branch: main
+  # Database: Production Neon branch
+  # ==========================================
+  - type: web
+    name: lmsproject
+    runtime: python
+    plan: free
+    branch: main
+    buildCommand: bash build.sh
+    startCommand: python -m gunicorn lmsproject.wsgi.application
+    healthCheckPath: /
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.14.7"
+
+      - key: DATABASE_URL
+        sync: false
+
+      - key: SECRET_KEY
+        generateValue: true
+
+      - key: DEBUG
+        value: "False"
+
+      - key: PRODUCTION
+        value: "True"
+
+      - key: ALLOWED_HOSTS
+        fromService:
+          name: lmsproject
+          type: web
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
+
+      - key: SUPERUSER_USERNAME
+        sync: false
+
+      - key: SUPERUSER_EMAIL
+        sync: false
+
+      - key: SUPERUSER_PASSWORD
+        sync: false
+
+
+  # ==========================================
+  # BETA / TESTING SERVICE
+  # Git branch: beta
+  # Database: Separate Neon beta branch
+  # ==========================================
+  - type: web
+    name: lmsproject-beta
+    runtime: python
+    plan: free
+    branch: beta
+    buildCommand: bash build.sh
+    startCommand: python -m gunicorn lmsproject.wsgi.application
+    healthCheckPath: /
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.14.7"
+
+      - key: DATABASE_URL
+        sync: false
+
+      - key: SECRET_KEY
+        generateValue: true
+
+      - key: DEBUG
+        value: "False"
+
+      - key: PRODUCTION
+        value: "True"
+
+      - key: ALLOWED_HOSTS
+        fromService:
+          name: lmsproject-beta
+          type: web
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
+
+      - key: SUPERUSER_USERNAME
+        sync: false
+
+      - key: SUPERUSER_EMAIL
+        sync: false
+
+      - key: SUPERUSER_PASSWORD
+        sync: false

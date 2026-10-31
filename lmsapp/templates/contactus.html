@@ -1,0 +1,180 @@
+{% extends "parent.html" %}
+{% block title %}
+    <title>Contact Us</title>
+{% endblock title %}
+{% block main %}
+<script>
+    function validate()
+    {
+        var name=document.getElementById("name");
+        var contactno=document.getElementById("contactno");
+        var emailaddress=document.getElementById("emailaddress");
+        var emailexp=/^\w+([\.-]?\w+)*@\w+([\.-?\w+])*(\.\w{2,3})+$/
+        if (name.value==null || name.value=="")
+        {
+            alert('Please enter your name');
+            name.focus();
+        }
+        else if (contactno.value=="" || contactno.value==null)
+        {
+            alert('Please enter contact no');
+            contactno.focus();
+        }
+        else if (isNaN(contactno.value))
+        {
+            alert('Please enter number only');
+            contactno.focus();
+        } 
+        else if (contactno.value.length!=10)
+        {
+            alert('Please enter contact number');
+            contactno.focus();
+        }
+        else if (emailaddress.value==null || emailaddress.value=="")
+        {
+            alert('Please enter your emailaddress');
+            emailaddress.focus();
+        }
+        else if (!emailexp.test(emailaddress.value))
+        {
+            alert('Please enter valid emailexp');
+            emailexp.focus();
+        }
+        else
+        {
+            document.getElementById("frmcontactus").submit();
+        }
+    }
+</script>
+{% if messages %}
+{% for messages in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Thanks!</strong>Your Enquiry is Successfull
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+</div>
+{% endfor %}
+{% endif %}
+    
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<style>
+/*Contact sectiom*/
+.content-header{
+  font-family: 'Oleo Script', cursive;
+  color:yellow;
+  font-size: 45px;
+}
+
+.section-content{
+  text-align: center; 
+
+}
+#contact{
+    
+    font-family: 'Teko', sans-serif;
+    margin-top: 1px;
+  padding-top: 60px;
+  height: 600px;
+    color : #fff;
+        
+}
+.contact-section{
+  padding-top: 40px;
+}
+.contact-section .col-md-6{
+  width: 50%;
+}
+
+.form-line{
+  border-right: 1px solid #B29999;
+}
+
+.form-group{
+  margin-top: 10px;
+}
+label{
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}
+.form-control{
+  font-size: 1.3em;
+  color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+   /* margin-top: px;*/
+}
+
+.submit{
+  font-size: 1.1em;
+  float: right;
+  width: 150px;
+  background-color: transparent;
+  color: #fff;
+
+}
+</style>
+
+<!------ Include the above in your HEAD tag ---------->
+<section id="contact">
+  <div class="section-content">
+  <h1 class="section-header">Get in <span class="content-header wow fadeIn "> Contact with us</span></h1>
+  </div>
+  <div class="contact-section">
+                      <div>
+                          <form class="form-group" id="frmcontactus" method="post" onsubmit="event.preventDefault();validate();" action="{% url 'lmsapp:contactus' %}">
+                              {% csrf_token %}
+                      <div class="col-md-6"style="float: left;">
+                      <div class="form-group" style="width: 40%; margin-left: 300px;">
+                      <label>Your name</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder=" Enter Name" required/>
+                      </div>
+                <div class="form-group" style="width: 40%; margin-left: 300px;">
+                  <label>Gender</label>
+                              <input type="radio" name="gender" value="Male" class="form-check-input"/>Male
+                              <input type="radio" name="gender" value="Female" class="form-check-input"/>Female
+                              <input type="radio" name="gender" value="Other" class="form-check-input"/>Other
+                      
+                </div>
+                            <div class="form-group" style="width: 40%; margin-left: 300px;">
+                              <label>Email</label>
+                              <input type="text" name="emailaddress" class="form-control" id="emailaddress" required/>
+  
+                          </div>	
+                <div class="form-group" style="width: 40%; margin-left: 300px;">
+                  <label>Mobile No.</label>
+                              <input type="number" name="contactno" class="form-control" id="contactno" required/>
+                </div>
+                                      </div>
+                          
+              <div class="col-sm-6" style="float: left;">
+                          <div class="form-group" style="width: 40%; margin-left: 10px;">
+                              <label>Address</label>
+                              <textarea name="Address" class="form-control" style="height: 50px;" required></textarea>
+                          </div><br/>
+                          <div class="form-group" style="width: 40%; margin-left: 10px;">
+                              <label>Enquiry</label>
+                              <textarea name="enquirytext" class="form-control" style="height: 50px;" required></textarea>
+                          </div>
+                <div><br/><br/>&nbsp;
+  
+                  <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                </div>
+                
+            </div>
+          </form>
+        </div>
+      </section>
+  
+  
+  
+
+
+
+
+
+
+
+
+{% endblock main %}
