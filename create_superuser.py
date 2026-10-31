@@ -2,7 +2,7 @@ import os
 import django
 
 # Replace 'your_project_name' with your actual Django project folder name
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project_name.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lmsproject.settings')
 django.setup()
 
 from django.contrib.auth.models import User
@@ -10,9 +10,9 @@ from lmsapp.models import Login
 
 # Fetch credentials from environment variables (Set these in Render/Netlify dashboard)
 # It uses defaults here just for fallback, but in prod, environment variables are safer.
-SUPERUSER_NAME = os.environ.get('ADMIN_USERID', 'admin_prod')
-SUPERUSER_EMAIL = os.environ.get('ADMIN_EMAIL', 'admin@yourdomain.com')
-SUPERUSER_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'SecurePass123!')
+SUPERUSER_NAME = os.environ.get('SUPERUSER_NAME')
+SUPERUSER_EMAIL = os.environ.get('SUPERUSER_EMAIL')
+SUPERUSER_PASSWORD = os.environ.get('SUPERUSER_PASSWORD')
 
 def setup_superuser():
     # 1. Create the Django superuser if it doesn't exist
