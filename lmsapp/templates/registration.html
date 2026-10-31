@@ -189,17 +189,18 @@
        
     }
 </script>
+
 {% if messages %}
-{% for messages in messages %}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Thanks!</strong>Your Enquiry is Successfull
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-</div>
-{% endfor %}
+    {% for messages in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Thanks! </strong>Your Registration is Successful
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    {% endfor %}
 {% endif %}
+
 <form class="form-group" id="frmregistration" method="post" onsubmit="event.preventDefault();validate();" action="{% url 'lmsapp:registration'%}">
 {% csrf_token %}
-
 
 <div class="container register">
     <div class="row">
@@ -207,10 +208,8 @@
             <img src="../static/images/A.png" alt="asdfg">
             <h3>Welcome</h3>
             <p>You are 30 seconds away!</p>
-            
         </div>
         <div class="col-md-9 register-right">
-            
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Apply as a Student</h3>
@@ -244,23 +243,21 @@
                                     <div class="form-group">
                                         <textarea name="address" class="form-control" placeholder="Your address"></textarea>
                                     </div>
-                                   
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="form-group">
-                                        
-                                    <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Your Email *"/>
+                                    <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Your Email *" autocomplete="email"/>
                                 </div>
                                 
                                 <select class="form-control" name="program">
-                                    <option class="hidden"  selected disabled >Please select your Program</option>
-                                {% for p in program %} 
-                                <option value="{{p.program}}">{{p.program}}</option>
-
-                                {% endfor %}
+                                    <option class="hidden" selected disabled >Please select your Program</option>
+                                    {% for p in program %} 
+                                        <!-- Changed value to p.id -->
+                                        <option value="{{p.id}}">{{p.program}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
 
@@ -268,49 +265,35 @@
                                 <select class="form-control" name="branch">
                                     <option class="hidden"  selected disabled>Please select your Branch</option>
                                     {% for p in branch %} 
-                                    <option value="{{p.branch}}">{{p.branch}}</option>
-    
+                                        <!-- Changed value to p.id -->
+                                        <option value="{{p.id}}">{{p.branch}}</option>
                                     {% endfor %}
-                                    </select>
+                                </select>
                             </div>
                             
                             <div class="form-group">
                                 <select class="form-control" name="year">
                                     <option class="hidden"  selected disabled>Please select your Year</option>
                                     {% for p in year %} 
-                                    <option value="{{p.year}}">{{p.year}}</option>
-    
+                                        <!-- Changed value to p.id -->
+                                        <option value="{{p.id}}">{{p.year}}</option>
                                     {% endfor %}
-                                    
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password *" name="password" id="password" />
+                                <input type="password" class="form-control" placeholder="Password *" name="password" id="password" autocomplete="new-password"/>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control"  placeholder="Confirm Password *" name="confirmpassword" id="confirmpassword" />
+                                <input type="password" class="form-control"  placeholder="Confirm Password *" name="confirmpassword" id="confirmpassword" autocomplete="new-password"/>
                             </div>
                             
                             <input type="submit" class="btnRegister"  value="Register"/>
                         </div>
                     </div>
                 </div>
-                        
-                            
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-
 </div>
-
-
-
-
-
-
-
-
+</form> <!-- Missing closing form tag added here -->
 {% endblock main %}
