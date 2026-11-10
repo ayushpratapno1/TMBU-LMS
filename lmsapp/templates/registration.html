@@ -191,9 +191,9 @@
 </script>
 
 {% if messages %}
-    {% for messages in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Thanks! </strong>Your Registration is Successful
+    {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'info' %}info{% elif message.tags == 'success' %}success{% else %}warning{% endif %} alert-dismissible fade show" role="alert">
+        <small><strong>{{ message }}</strong></small>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
     {% endfor %}

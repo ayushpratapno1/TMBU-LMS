@@ -11,3 +11,7 @@ gunicorn==26.2.0
 
 # PostgreSQL support for Render
 psycopg2-binary==2.9.13
+
+# Email service
+resend>=2.53.0
+
