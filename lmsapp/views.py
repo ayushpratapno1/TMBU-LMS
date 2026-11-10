@@ -19,17 +19,14 @@ def registration(request):
         log = Login(userid=rollno, password=password, usertype='student', status='false')
         log.save()
         
-        # 2. Fetch the Foreign Key Objects (Assuming your HTML form submits the IDs)
-        # If your HTML form submits the string names instead of IDs, you would use: Program.objects.get(program=request.POST['program'])
-        try:
-            program_obj = Program.objects.get(id=request.POST['program'])
-            branch_obj = Branch.objects.get(id=request.POST['branch'])
-            year_obj = Year.objects.get(id=request.POST['year'])
-        except (ValueError, Program.DoesNotExist):
-            # Fallback just in case your HTML form passes strings instead of IDs
-            program_obj = Program.objects.filter(program=request.POST['program']).first()
-            branch_obj = Branch.objects.filter(branch=request.POST['branch']).first()
-            year_obj = Year.objects.filter(year=request.POST['year']).first()
+        # 2. Fetch the Foreign Key Objects (supports both IDs and names)
+        program_val = request.POST.get('program')
+        branch_val = request.POST.get('branch')
+        year_val = request.POST.get('year')
+
+        program_obj = Program.objects.filter(id=program_val).first() if str(program_val).isdigit() else Program.objects.filter(program=program_val).first()
+        branch_obj = Branch.objects.filter(id=branch_val).first() if str(branch_val).isdigit() else Branch.objects.filter(branch=branch_val).first()
+        year_obj = Year.objects.filter(id=year_val).first() if str(year_val).isdigit() else Year.objects.filter(year=year_val).first()
 
         # 3. Create the Student and link everything
         stu = Student(

@@ -75,8 +75,11 @@ def viewstudentbook(request):
         return redirect('lmsapp:login')
         
     rollno = request.session['rollno']
-    stu = Student.objects.get(rollno=rollno)
+    try:
+        stu = Student.objects.get(rollno=rollno)
+    except Student.DoesNotExist:
+        return redirect('lmsapp:login')
     
     # Filter by the relation!
-    book = IssueBook.objects.filter(student=stu)
+    book = IssueBook.objects.filter(student=stu).select_related('book', 'book__program', 'book__branch', 'book__year')
     return render(request, 'viewstudentbook.html', locals())

@@ -11,7 +11,3 @@ gunicorn==26.2.0
 
 # PostgreSQL support for Render
 psycopg2-binary==2.9.13
-
-# Cloudinary-backed media storage
-cloudinary==1.46.3
-django-cloudinary-storage==0.3.0

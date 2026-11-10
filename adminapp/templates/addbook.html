@@ -52,7 +52,7 @@ tr:nth-child(even) {
 <select class="form-control text-light" name="program">
 <option class="hidden"  selected disabled >Please select your Program</option>
 {% for p in program %} 
-<option value="{{p.program}}">{{p.program}}</option>
+<option value="{{p.id}}">{{p.program}}</option>
 
 {% endfor %}
 </select>
@@ -64,7 +64,7 @@ tr:nth-child(even) {
                         <select class="form-control text-light" name="branch">
                         <option class="hidden"  selected disabled>Please select your Branch</option>
                         {% for p in branch %} 
-                        <option value="{{p.branch}}">{{p.branch}}</option>
+                        <option value="{{p.id}}">{{p.branch}}</option>
 
                         {% endfor %}
                         </select>
@@ -78,7 +78,7 @@ tr:nth-child(even) {
 <select class="form-control text-light" name="year">
 <option class="hidden"  selected disabled>Please select your Year</option>
 {% for p in year %} 
-<option value="{{p.year}}">{{p.year}}</option>
+<option value="{{p.id}}">{{p.year}}</option>
 
 {% endfor %}
 

@@ -1,5 +1,13 @@
 {% extends "adminparent.html" %}
 {% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+</div>
+{% endfor %}
+{% endif %}
 <style>
   table {
       font-family: arial, sans-serif;
@@ -40,22 +48,23 @@
                 {% for f in comp %}
         <tr>
             <td>{{forloop.counter}}</td>
-            <td>{{f.rollno}}</td>
-            <td>{{f.name}}</td>
-            <td>{{f.program}}</td>
-            <td>{{f.branch}}</td>
-            <td>{{f.year}}</td>
-            <td>{{f.contactno}}</td>
-            <td>{{f.emailaddress}}</td>
+            <td>{{f.student.rollno}}</td>
+            <td>{{f.student.name}}</td>
+            <td>{{f.student.program}}</td>
+            <td>{{f.student.branch}}</td>
+            <td>{{f.student.year}}</td>
+            <td>{{f.student.contactno}}</td>
+            <td>{{f.student.emailaddress}}</td>
             <td>{{f.subject}}</td>
             <td>{{f.responsetext}}</td>
             <td>{{f.responsedate}}</td>
         </tr>
-
+        {% empty %}
+        <tr>
+            <td colspan="11" style="text-align: center;">No complaints found</td>
+        </tr>
         {% endfor %}
             </table>
-            
-              
         </div>
     </div>
 {% endblock body %}

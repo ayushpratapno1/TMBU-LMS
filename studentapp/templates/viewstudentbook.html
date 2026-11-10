@@ -9,30 +9,32 @@
         <h2>View Issued Book</h2>
         <table class="table table-bordered">
             <tr>
-                <th>BooK Id</th>
+                <th>Book Id</th>
                 <th>Subject</th>
                 <th>Book Name</th>
                 <th>Author Name</th>
-                <th>Issued Book</th>
+                <th>Issue Date</th>
                 <th>Due Date</th>
                 <th>Status</th>
             </tr>
             {% for b in book %}
             <tr>
-                <td>{{b.bookid}}</td>
-                <td>{{b.subject}}</td>
-                <td>{{b.bookname}}</td>
-                <td>{{b.authorname}}</td>
+                <td>{{b.book.bookid}}</td>
+                <td>{{b.book.subject}}</td>
+                <td>{{b.book.bookname}}</td>
+                <td>{{b.book.authorname}}</td>
                 <td>{{b.issuedate}}</td>
                 <td>{{b.duedate}}</td>
                 <td>{{b.status}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" style="text-align: center;">No issued books found</td>
             </tr>
             {% endfor %}
         </table>
   </div>
   </div>
 </div>
-
-
 
 {% endblock body %}
