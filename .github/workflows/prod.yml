@@ -1,0 +1,63 @@
+name: Production CI & Test Suite
+
+on:
+  push:
+    branches: [ "main", "beta" ]
+  pull_request:
+    branches: [ "main", "beta" ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run Django Test Suite & Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY || 'django-insecure-ci-test-key-lms-production-check' }}
+      DEBUG: 'False'
+      PRODUCTION: 'False'
+      ALLOWED_HOSTS: 'localhost 127.0.0.1 testserver'
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY || '' }}
+      RESEND_FROM_EMAIL: 'LMS Security <onboarding@resend.dev>'
+      PYTHONUNBUFFERED: '1'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "requirements.txt"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+
+      - name: Verify Model Migrations
+        run: |
+          python manage.py makemigrations --check --dry-run
+
+      - name: Run Django System Check
+        run: |
+          python manage.py check
+
+      - name: Verify Static Files Collection
+        run: |
+          python manage.py collectstatic --noinput --dry-run
+
+      - name: Run Full Test Suite
+        run: |
+          python manage.py test --verbosity 2
+
